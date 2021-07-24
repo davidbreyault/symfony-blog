@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container">
+            <article>
+                <h2>{{ article.title }}</h2>
+                <p class="content">{{ article.content }}</p>
+                <div class="article-footer">
+                    <p>Written by : {{ article.user }}</p>
+                    <p>{{ article.createdAt|date('d/m/Y - h:m:s') }}</p>
+                </div>
+            </article>
+        </div>
+    </section>
+{% endblock %}

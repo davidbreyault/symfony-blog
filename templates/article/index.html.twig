@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container">
+            <h1>Articles</h1>
+            {% if is_granted('ROLE_USER') %}
+                <a href="{{ path('add_article') }} " class="cta-button">Write a new article</a>
+            {% endif %}
+            <ul class="articles">
+            {% for article in articles|reverse %}
+                <li>
+                    <article>
+                        <h2>{{ article.title }}</h2>
+                        <p class="content">{{ article.content|slice(0, 500) }}...</p>
+                        <a href="{{ path('show_article', {'id': article.id}) }}">Lire la suite</a>
+                        <div class="article-footer">
+                            <p>Written by : {{ article.user.firstname }} {{ article.user.lastname }}</p>
+                            <p>{{ article.createdAt|date('d/m/Y - h:m:s') }}</p>
+                        </div>
+                    </article>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}

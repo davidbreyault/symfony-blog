@@ -6,14 +6,43 @@
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
     <body>
+        <header class="header">
+            <div class="container">
+                <nav class="header-nav">
+                    <ul class="links-list">
+                        <li class="logo">SuperBlog</li>
+                        <li><a href="{{ path('home') }}">Home</a></li>
+                        <li><a href="{{ path('articles') }}">Articles</a></li>
+                        <li><a href="#">Categories</a></li>
+                    </ul>
+                    <ul class="cta-list">
+                        {% if app.user %}
+                            <li><a href="{{ path('profile') }}">{{ app.user.firstname }} {{ app.user.lastname }}</a></li>
+                            <li><a href="{{ path('app_logout') }}">Logout</a></li>
+                        {% else %}
+                            <li><a href="{{ path('register') }}">Sign up</a></li>
+                            <li><a href="{{ path('app_login') }}">Log In</a></li>
+                        {% endif %}
+                        
+                    </ul>
+                </nav>
+            </div>
+        </header>
         {% block body %}{% endblock %}
+        <footer class="footer">
+            <div class="container">
+                <p>© 2021 - Mon super Blog</p>
+                <a href="#">Politique de confidentialité</a>
+                <a href="#">Mentions Légales</a>
+            </div>
+        </footer>
     </body>
 </html>

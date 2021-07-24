@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ user.firstname }}{% endblock %}
+
+{% block body %}
+    <section>
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="success">
+                <div class="container">
+                    <div>{{ message }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        {% endfor %}
+        
+        <div class="container">
+            <h1>Hello {{ user.firstname }} !</h1>
+            {% if is_granted('ROLE_USER') %}
+                <a href="{{ path('add_article') }} " class="cta-button">Write a new article</a>
+            {% endif %}
+            <ul class="articles">
+            {% for article in articles|reverse %}
+                <li>
+                    <article>
+                        <h2>{{ article.title }}</h2>
+                        <p class="content">{{ article.content|slice(0, 100) }}...</p>
+                        <div class="article-cta">
+                            <a href="{{ path('show_article', {'id': article.id}) }}">Lire la suite</a>
+                            <a href="{{ path('update_article', {'id': article.id}) }}">Modifier</a>
+                            <a href="{{ path('remove_article', {'id': article.id}) }}" class='remove-cta'>Supprimer</a>
+                        </div>
+                        <div class="article-footer">
+                            <p>Written by : {{ app.user.firstname }} {{ app.user.lastname }}</p>
+                            <p>{{ article.createdAt|date('d/m/Y - h:m:s') }}</p>
+                        </div>
+                    </article>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}
