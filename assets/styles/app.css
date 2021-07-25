@@ -277,10 +277,9 @@ section h1 {
 .article-footer {
   display: flex;
   justify-content: space-between;
-  margin: 1rem 0;
   width: 100%;
   color: #8f8f8f;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-style: italic;
 }
 article .content {
@@ -292,10 +291,19 @@ form label, form input, form textarea {
   width: 100%;
   resize: none;
 }
-form input, form textarea, form button[type='submit'] {
+form input, form textarea, form button[type='submit'], form select {
   padding: 0.75rem;
   margin-bottom: 1rem;
   border: none;
+}
+form textarea {
+  min-height: 12rem;
+}
+form button[type='submit'] {
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  background-color: #464646;
+  color: #e3e3e3;
 }
 .login-section .container
 .register-section .container {
@@ -317,6 +325,35 @@ form input, form textarea, form button[type='submit'] {
   background-color: #464646;
   color: #e3e3e3;
   border: 1.5px solid #464646;
+}
+
+.comments {
+  width: max-content;
+  margin: 4rem 0;
+  padding: 2rem;
+  border-radius: 2rem;
+  background-color: #fff;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.25);
+}
+.comments h2 {
+  margin-bottom: 1rem;
+}
+.comments .date {
+  color: #8f8f8f;
+  font-style: italic;
+  font-size: 1.3rem;
+}
+.comment:not(.comment:last-of-type) {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px #dadada solid;
+}
+
+.profile-actions {
+  display: flex;
+}
+.profile-actions a {
+  margin-right: 1rem;
 }
 
 .footer {

@@ -63,10 +63,12 @@ class ArticleController extends AbstractController
     public function show_article($id)
     {
         $article = $this->entityManager->getRepository(Article::class)->find($id);
-        //dd($article);
+        $comments = $article->getComments()->toArray();
+        //dd($comments);
 
         return $this->render('article/show.html.twig', [
-            'article'       => $article
+            'article'       => $article,
+            'comments'      => $comments
         ]);
     }
 }
