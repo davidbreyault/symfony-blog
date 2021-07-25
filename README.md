@@ -11,7 +11,8 @@ Consultation d'articles sur un mini blog. Possibilité de créer, modifier, supp
 
 Copiez-collez le fichier `.env`, renommez la copie en `.env.local`
 
-Conservez seulement la ligne 30 `DATABASE_URL="mysql://db_username:db_password@127.0.0.1:3306/db_name?serverVersion=5.7"`
+Conservez seulement la ligne 30 
+`DATABASE_URL="mysql://db_username:db_password@127.0.0.1:3306/db_name?serverVersion=5.7"`
 
 Renseignez vos identifiants à phpMyAdmin, nommez la future base de données.
 
