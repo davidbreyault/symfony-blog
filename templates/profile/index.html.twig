@@ -18,8 +18,8 @@
             <h1>Hello {{ user.firstname }} !</h1>
             {% if is_granted('ROLE_USER') %}
                 <div class="profile-actions">
-                    <a href="{{ path('add_article') }} " class="cta-button">Write a new article</a>
-                    <a href="#" class="cta-button">Check your comments</a>
+                    <a href="{{ path('add_article') }}" class="cta-button">Write a new article</a>
+                    <a href="{{ path('my_comments') }} " class="cta-button">Check your comments</a>
                 </div>
             {% endif %}
             <ul class="articles">

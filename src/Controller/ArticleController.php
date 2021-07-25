@@ -64,11 +64,13 @@ class ArticleController extends AbstractController
     {
         $article = $this->entityManager->getRepository(Article::class)->find($id);
         $comments = $article->getComments()->toArray();
+        $user = $this->getUser();
         //dd($comments);
 
         return $this->render('article/show.html.twig', [
             'article'       => $article,
-            'comments'      => $comments
+            'comments'      => $comments,
+            'user'          => $user
         ]);
     }
 }

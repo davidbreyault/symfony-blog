@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}{{ controller_name }}{% endblock %}
 
 {% block body %}
     <section>
         <div class="container">
-            <h1>Welcome !</h1>
+            <div class="home">
+                <h1>👾 Welcome to SuperBlog 👾</h1>
+                <p>Interact with the community by posting articles and comments !</p>
+            </div>
         </div>
     </section>
 {% endblock %}

@@ -233,6 +233,10 @@ section h1 {
   margin-bottom: 4rem;
 }
 
+.home p {
+  text-align: center;
+}
+
 .articles {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -243,10 +247,12 @@ section h1 {
 }
 .articles article a {
   margin: 1rem 0;
-  color: #0048ff;
   text-decoration: none;
 }
-.articles .remove-cta {
+section a {
+  color: #0048ff;
+}
+.remove-cta {
   color: #871919; 
 }
 .articles article a:hover {
@@ -277,6 +283,7 @@ section h1 {
 .article-footer {
   display: flex;
   justify-content: space-between;
+  margin: 1rem 0;
   width: 100%;
   color: #8f8f8f;
   font-size: 1.3rem;

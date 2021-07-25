@@ -4,6 +4,15 @@
 
 {% block body %}
     <section>
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="success">
+                <div class="container">
+                    <div>{{ message }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        {% endfor %}
         <div class="container">
             <article>
                 <h1>{{ article.title }}</h1>
@@ -24,6 +33,12 @@
                             <p class="username"><strong>{{ comment.getUser().firstname }}</strong> said :</p>
                             <p class="content">{{ comment.content }}</p>
                             <p class="date">{{ comment.createdAt|date('d/m/Y - h:m:s') }}</p>
+                            {% if is_granted("ROLE_USER") %}
+                                {% if comment.getUser().getId() is same as (user.id) %}
+                                    <a href="{{ path("update_comment", {"id": comment.id}) }}">Update</a>
+                                    <a href="{{ path("remove_comment", {"id": comment.id}) }}" class='remove-cta'>Delete</a>
+                                {% endif %}
+                            {% endif %}
                         </div>
                     {% endfor %}
                 </div>
