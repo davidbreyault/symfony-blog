@@ -4,6 +4,15 @@
 
 {% block body %}
     <section class="login-section">
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="success">
+                <div class="container">
+                    <div>{{ message }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        {% endfor %}
         <div class="container">
             <h1>Log in</h1>
             <form method="post" class="login-form">

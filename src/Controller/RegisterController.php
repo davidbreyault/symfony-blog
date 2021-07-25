@@ -36,6 +36,8 @@ class RegisterController extends AbstractController
                 $user->setLastname(strtoupper($user->getLastname()));
                 $this->entityManager->persist($user);
                 $this->entityManager->flush();
+                $this->addFlash('success', 'Congrats, your account has been created with success !');
+                return $this->redirectToRoute('profile');
             }
 
         return $this->render('register/index.html.twig', [

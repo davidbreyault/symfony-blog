@@ -345,7 +345,8 @@ form button[type='submit'] {
 .comments h2 {
   margin-bottom: 1rem;
 }
-.comments .date {
+.comments .date,
+.comment .date {
   color: #8f8f8f;
   font-style: italic;
   font-size: 1.3rem;
