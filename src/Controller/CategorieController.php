@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Categorie;
+use App\Entity\Article;
 use App\Form\CategorieType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,13 +26,19 @@ class CategorieController extends AbstractController
     {
         $categories = $this->entityManager->getRepository(Categorie::class)->findAll();
         $form = $this->createForm(CategorieType::class, $categories);
-
         $form->handleRequest($request);
         
             if ($form->isSubmitted() && $form->isValid()) {
-                $categorie = $form->get('categorie')->getData();
-                $articles = $categorie->getArticles()->toArray();
-                return $this->redirectToRoute('categories');
+                $categories = $form->getData();
+                $categorie = $categories['categorie'];
+                $categorie->getTitle();
+                $articles = $this->entityManager->getRepository(Article::class)->findBy(['categorie'=>$categorie]);
+
+                //return $this->redirectToRoute('categories');
+                return $this->render('categorie/index.html.twig', [
+                    'form'          => $form->createView(),
+                    'articles'      => $articles
+                ]);
             }
 
         return $this->render('categorie/index.html.twig', [
